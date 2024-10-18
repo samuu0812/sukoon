@@ -1,4 +1,3 @@
-**here you can upload your cookies txt files**
 # Netscape HTTP Cookie File
 # This is a generated file! Do not edit.
 
@@ -26,7 +25,3 @@
 .youtube.com	TRUE	/	TRUE	1740114867	VISITOR_INFO1_LIVE	QYwllm17YR8
 
 
-
-
-*•you can upload multiple file's*
-*•file name not matters your file like a.txt, a2.txt its support all any name*
