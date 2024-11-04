@@ -1,59 +1,14 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-import os
+# Netscape HTTP Cookie File
+# This is a generated file! Do not edit.
 
-options = Options()
-
-prefs = {'exit_type': 'Normal'}
-options.add_experimental_option("prefs", {'profile': prefs})
-options.add_argument(f"user-data-dir={os.getcwd()}/chrome")
-options.add_argument("user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1")
-options.add_argument("no-sandbox")
-options.add_argument('start-maximized')
-options.add_argument('disable-infobars')
-options.add_argument("--autoplay-policy=no-user-gesture-required")
-options.add_experimental_option("excludeSwitches", ['enable-automation'])
-
-
-driver = webdriver.Chrome(options=options)
-
-def save_cookies_to_netscape_file(cookies, output_file):
-    with open(output_file, 'w') as f:
-        f.write("# Netscape HTTP Cookie File\n")
-        f.write("# This is a generated file! Do not edit.\n\n")
-        f.write("# domain  include_subdomains  path  secure  expiration_date  name  value\n")
-        
-        for cookie in cookies:
-            # Determine the correct attribute name for expiry based on Selenium version or browser
-            expiry = cookie.get('expiry') or cookie.get('expires') or 0
-            
-            f.write(f"{cookie['domain']}\t")
-            f.write("TRUE\t")  # include_subdomains
-            f.write(f"{cookie['path']}\t")
-            f.write("TRUE\t" if cookie.get('secure') else "FALSE\t")
-            f.write(f"{int(expiry)}\t")  # expiration_date
-            f.write(f"{cookie['name']}\t{cookie['value']}\n")
-
-    return f"Cookies have been saved to {output_file}"
-
-while True:
- user_input = input("Login to your YouTube account play a video [Completed] (Y/N)")
- if user_input == "Y":
-   break
-  
-print(f'Hello, Logged in to your account..!')
-
-
-while True:
- user_input = input("enter a name for your cookies file: ")
- if user_input:
-   output_file = f"{user_input}.txt"
-   break
-
-cookies = driver.get_cookies()
-output_file = f"{os.getcwd()}/{output_file}"
-save_cookies_to_netscape_file(cookies, output_file)
-print("Cookies saved to:",output_file)
-
-
-driver.quit()
+# domain  include_subdomains  path  secure  expiration_date  name  value
+.youtube.com	TRUE	/	TRUE	0	YSC	SJPIQHnvIcg
+.youtube.com	TRUE	/	TRUE	1730721217	GPS	1
+.youtube.com	TRUE	/	TRUE	1764077531	__Secure-3PSID	g.a000pQhaSMbi3TzGrVDadsk01r-icpV23KLHRkTaNWpdKpIRI2iNhoYjZmla_f6NxWun4vsdagACgYKAYkSARASFQHGX2MiNSv6oDFJTGy4uKFpeWY54BoVAUF8yKopWMRX9MMZYdMqeIt3T9C80076
+.youtube.com	TRUE	/	TRUE	1744969380	VISITOR_INFO1_LIVE	DsO86Pela2M
+.youtube.com	TRUE	/	TRUE	1761053460	__Secure-3PSIDTS	sidts-CjEBQlrA-NAvKfXB3fmG76Fiu40oP7UfJLLbOrdF_E79u2HahFJtvTeYM7EexVDm5VP_EAA
+.youtube.com	TRUE	/	TRUE	1761053460	__Secure-1PSIDTS	sidts-CjEBQlrA-NAvKfXB3fmG76Fiu40oP7UfJLLbOrdF_E79u2HahFJtvTeYM7EexVDm5VP_EAA
+.youtube.com	TRUE	/	TRUE	1764077531	__Secure-3PAPISID	6ETrKi0xSOHl9Dmg/AOnuHj2FCCiB_IWba
+.youtube.com	TRUE	/	TRUE	1765279417	PREF	tz=Asia.Calcutta
+.youtube.com	TRUE	/	TRUE	1762077378	__Secure-3PSIDCC	AKEyXzWKj16q-LinBs4kDcFHquAGuyxMpGo_lnNlAcRKb2IKcHM-VjQ9XVQRZ4UunSB0AJdCrA
+.youtube.com	TRUE	/	TRUE	1744969380	VISITOR_PRIVACY_METADATA	CgJJThIEGgAgEw%3D%3D
